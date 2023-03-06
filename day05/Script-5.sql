@@ -1,0 +1,45 @@
+CREATE TABLE "HR"."STUDENT_INFORMATION"(
+	"학생번호" INTEGER,
+	"학생이름" VARCHAR2(100),
+	"주소" VARCHAR2(100),
+	"학과" VARCHAR2(100)
+)
+
+CREATE TABLE "HR"."RECORD"(
+	"학생번호" INTEGER,
+	"강좌이름" VARCHAR2(100),
+	"성적" FLOAT
+)
+
+CREATE TABLE "HR"."SUBJECT3"(
+	"강좌이름" VARCHAR2(100),
+	"강의실" VARCHAR2(100)
+)
+
+CREATE TABLE "HR"."DEPARTMENT"(
+	"학과" VARCHAR2(100),
+	"학과 사무실" VARCHAR2(100)
+)
+
+INSERT INTO HR.SUBJECT3 VALUES('데이터베이스', '공학관110')
+
+INSERT INTO HR.STUDENT_INFORMATION VALUES('501', '박지성', '영국 맨체스터', '컴퓨터과')
+
+SELECT * FROM HR.STUDENT_INFORMATION WHERE 학생번호 IN (SELECT 학생번호 FROM HR."RECORD" WHERE 성적 = 3.5)
+
+SELECT * FROM HR."RECORD" WHERE 강좌이름 = (SELECT 강좌이름 FROM HR."SUBJECT3" WHERE 강의실 = '공학관110')
+
+SELECT 학생번호 FROM HR."RECORD" INNER JOIN HR.SUBJECT3 ON RECORD 강좌이름 =  AND 강의실 = '공학관110'
+
+-----------------------------------
+
+INSERT INTO "MEMBER" 
+VALUES ('com', 'com','com','com') 
+
+UPDATE "MEMBER" SET tel = '999'
+WHERE id = 'com'
+
+DELETE FROM "MEMBER"
+WHERE id = 'com'
+
+SELECT * FROM "MEMBER" m 
